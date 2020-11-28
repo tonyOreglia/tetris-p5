@@ -1,0 +1,7 @@
+div#appDiv button.active {
+    background: #38b57e;
+}
+
+div#appDiv button.inactive {
+    background: #d37676;
+}

@@ -1,0 +1,14 @@
+{
+    "name": "tic-tac-toe",
+    "version": "1.0.0",
+    "description": "Play tic tac toe against a computer",
+    "main": "",
+    "scripts": {
+        "dev": "npx light-server -s . -w \"**/*\""
+    },
+    "author": "Tony Oreglia",
+    "license": "MIT",
+    "devDependencies": {
+        "light-server": "^2.9.1"
+    }
+}
