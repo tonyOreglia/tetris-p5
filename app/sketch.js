@@ -20,18 +20,37 @@ function setup() {
     initInterface();
 }
 
-// function mouseClicked() {
-//     paused = !paused;
-//     if (paused) {
-//         return noLoop();
-//     }
-//     loop();
-// }
+function mouseClicked() {
+    if (appSettings.paused) {
+        return;
+    }
+    let liveShape = this.shapes.find((shape) => shape.live);
+    if (liveShape) {
+        liveShape.rotateShape();
+    }
+}
 
 function draw() {
     if (appSettings.paused) {
         return;
     }
+
+    let liveShape = this.shapes.find((shape) => shape.live);
+    if (liveShape) {
+        let diff = mouseX - liveShape.translateX;
+        for (let i = 0; i < 4; i++) {
+            if (diff > gridScale / 2) {
+                liveShape.moveRight();
+            } else if (diff < -gridScale / 2) {
+                liveShape.moveLeft();
+            }
+            diff = mouseX - liveShape.translateX;
+        }
+        if (mouseY > height - gridScale * 3) {
+            liveShape.moveDown();
+        }
+    }
+
     background(51);
     let live = false;
     for (let i = 0; i < shapes.length; i++) {
@@ -112,23 +131,6 @@ function showStableCubes(cubes) {
 
 function someCubeAt(x, y) {
     return this.stableCubes.some((c) => c.x === x && c.y === y);
-}
-
-function keyPressed() {
-    if (appSettings.paused) {
-        return;
-    }
-    liveShape = this.shapes.find((shape) => shape.live);
-    if (keyCode === LEFT_ARROW) {
-        liveShape.moveLeft();
-    } else if (keyCode === RIGHT_ARROW) {
-        liveShape.moveRight();
-    } else if (keyCode === DOWN_ARROW) {
-        liveShape.moveDown();
-        redraw();
-    } else if (keyCode === SPACE_BAR) {
-        liveShape.rotateShape();
-    }
 }
 
 function Shape() {

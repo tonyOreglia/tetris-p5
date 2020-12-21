@@ -5,6 +5,7 @@
 -   [x] ~~_loss if user reaches ceiling_~~ [2020-11-27]
 -   [ ] noises when level is cleared
 -   [x] ~~_don't allow shifting left/right through an existing shape_~~ [2020-11-27]
+-   [ ] make it mouse controlled (for location of block) and clickable
 -   [ ] implement leveling up
 
 # Run in dev mode
